@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://dkm051efg7sti"]
+
+[ext_resource type="Script" uid="uid://bl3wobiunyrgq" path="res://game/menus/configs_tab.gd" id="1_su0ij"]
+
+[node name="MarginContainerConfigs" type="MarginContainer" unique_id=685625410 node_paths=PackedStringArray("music_slider", "vfx_slider")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 20
+script = ExtResource("1_su0ij")
+music_slider = NodePath("MarginContainer/VBoxContainer/MusicSlider")
+vfx_slider = NodePath("MarginContainer/VBoxContainer/VFXSlider")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=163750874]
+layout_mode = 2
+color = Color(0, 0, 0, 0.9137255)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=198270636]
+layout_mode = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1645669305]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Music" type="Label" parent="MarginContainer/VBoxContainer" unique_id=177483465]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Música"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="MarginContainer/VBoxContainer" unique_id=1821761977]
+layout_mode = 2
+
+[node name="VFX" type="Label" parent="MarginContainer/VBoxContainer" unique_id=771173576]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Efeitos Sonoros"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VFXSlider" type="HSlider" parent="MarginContainer/VBoxContainer" unique_id=1579619067]
+layout_mode = 2
+
+[node name="Spacing" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1510097640]
+layout_mode = 2
+text = "
+"
+
+[node name="ExitConfigs" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1153751039]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "OK"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ExitConfigs" to="." method="_on_exit_configs_pressed"]

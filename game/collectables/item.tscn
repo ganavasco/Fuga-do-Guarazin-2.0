@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://tgl7wuert5wl"]
+
+[ext_resource type="PackedScene" uid="uid://b87pe6flbtfn1" path="res://game/obstacles/obstacle.tscn" id="1_3gscc"]
+[ext_resource type="Script" uid="uid://deusplh3ajhwo" path="res://game/collectables/item_hitbox.gd" id="2_04vkq"]
+[ext_resource type="Texture2D" uid="uid://cyj3t3j6esiws" path="res://assets/collectibles/item.png" id="2_qiq87"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q6qpp"]
+size = Vector2(152.50003, 142.50003)
+
+[node name="Obstacle" unique_id=431197371 instance=ExtResource("1_3gscc")]
+
+[node name="Sprite" parent="." index="0" unique_id=352728666]
+scale = Vector2(0.32196975, 0.3219697)
+texture = ExtResource("2_qiq87")
+
+[node name="Hitbox" parent="." index="1" unique_id=106695997 node_paths=PackedStringArray("item")]
+collision_layer = 8
+script = ExtResource("2_04vkq")
+item = NodePath("..")
+
+[node name="CollisionShape2D" parent="Hitbox" index="0" unique_id=225902749]
+position = Vector2(0, -6.25)
+shape = SubResource("RectangleShape2D_q6qpp")
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="2" unique_id=435843657]
+rect = Rect2(-73.98811, -68.750015, 147.97623, 141.25003)
+
+[connection signal="area_entered" from="Hitbox" to="Hitbox" method="_on_area_entered"]

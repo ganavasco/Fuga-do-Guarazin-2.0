@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://cqqvgh5p8vqdd"]
+
+[ext_resource type="Texture2D" uid="uid://cyj3t3j6esiws" path="res://assets/collectibles/item.png" id="1_aclpb"]
+
+[node name="Entry" type="Control" unique_id=769081194]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="HBoxContainer" parent="." unique_id=2073429609]
+layout_mode = 1
+offset_right = 133.0
+offset_bottom = 128.0
+
+[node name="Control" type="Control" parent="VBoxContainer" unique_id=1369842842]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Control" unique_id=435009834]
+layout_mode = 0
+offset_left = 4.0
+offset_right = 123.0
+offset_bottom = 119.0
+texture = ExtResource("1_aclpb")
+expand_mode = 1
+
+[node name="Control2" type="Control" parent="VBoxContainer" unique_id=399066398]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Control2" unique_id=1948912237]
+layout_mode = 0
+offset_left = 126.0
+offset_top = 48.0
+offset_right = 127.0
+offset_bottom = 79.0
+text = "sdasdasdsdasdasdsdasdasdsdasdasdsdasdasdsdasdasdsdasdasdsdasdasdsdasdasdsdasdasdsdasdasdsdasdasdsdasdasdsdasdasdsdasdasd"
+autowrap_mode = 2

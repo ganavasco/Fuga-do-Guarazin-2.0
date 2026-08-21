@@ -1,0 +1,190 @@
+[gd_scene format=3 uid="uid://b3hguf5wwp2fk"]
+
+[ext_resource type="PackedScene" uid="uid://bqju2fe8q5qsg" path="res://game/stage/components/ground.tscn" id="1_53wmw"]
+[ext_resource type="Script" uid="uid://bx611q0t67amq" path="res://game/stage/stage.gd" id="1_cfr52"]
+[ext_resource type="PackedScene" uid="uid://dtgiadicix6a5" path="res://game/player/player.tscn" id="1_o78d5"]
+[ext_resource type="PackedScene" uid="uid://c1m3a8ynleuob" path="res://game/stage/components/obstacle_spawner/obstacle_spawner.tscn" id="3_7kq2w"]
+[ext_resource type="PackedScene" uid="uid://tsakn3lpa5pr" path="res://game/collectables/items/item1.tscn" id="3_xrl45"]
+[ext_resource type="PackedScene" uid="uid://es4bdhp5x0x8" path="res://game/ui/stage/stage_ui.tscn" id="5_hmf2r"]
+[ext_resource type="Texture2D" uid="uid://01flpfhxywy6" path="res://assets/background/far.png" id="6_ep7xg"]
+[ext_resource type="PackedScene" uid="uid://3mxkrt732bcd" path="res://game/background_objects/shrub1.tscn" id="7_kyo7w"]
+[ext_resource type="PackedScene" uid="uid://dbpqfhp23yl" path="res://game/background_objects/tree1.tscn" id="7_pdfn4"]
+[ext_resource type="PackedScene" uid="uid://ccw4gbi67idy4" path="res://game/background_objects/tree2.tscn" id="7_pv4ae"]
+[ext_resource type="Texture2D" uid="uid://c4bekt4acl8m2" path="res://assets/background/mid.png" id="8_hongp"]
+[ext_resource type="PackedScene" uid="uid://b348y2soeqn1r" path="res://game/stage/fire/fire.tscn" id="8_i44qu"]
+[ext_resource type="PackedScene" uid="uid://c3j4vqos0r8a6" path="res://game/background_objects/shrub2.tscn" id="8_kyo7w"]
+[ext_resource type="PackedScene" uid="uid://cbr62c4732fv1" path="res://game/obstacles/trunk1.tscn" id="9_6mhbi"]
+[ext_resource type="PackedScene" uid="uid://bicxrt74ykf4c" path="res://game/background_objects/machine1.tscn" id="9_12mlu"]
+[ext_resource type="Texture2D" uid="uid://btfm62t4f1yrm" path="res://assets/background/close.png" id="9_i44qu"]
+[ext_resource type="PackedScene" uid="uid://7iyb7o6hl60j" path="res://game/obstacles/trunk2.tscn" id="9_y7aik"]
+[ext_resource type="Texture2D" uid="uid://t4d00q6475mv" path="res://assets/background/ground.png" id="10_v5iu8"]
+[ext_resource type="PackedScene" uid="uid://s3m1yfmfc7s3" path="res://game/obstacles/trunk3.tscn" id="12_d6eks"]
+[ext_resource type="PackedScene" uid="uid://bng2ctpinhp25" path="res://game/collectables/items/item2.tscn" id="19_cq7qg"]
+[ext_resource type="PackedScene" uid="uid://b0gbfpik7dg4y" path="res://game/collectables/items/item3.tscn" id="20_3nox7"]
+
+[sub_resource type="Shader" id="Shader_5anj3"]
+code = "shader_type canvas_item;
+
+uniform float progress;
+
+
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	vec2 offset = vec2(progress, 0);
+	vec2 uv = UV + offset;
+	uv = vec2(uv.x - floor(uv.x), uv.y - floor(uv.y));
+	COLOR = texture(TEXTURE, uv);
+}
+
+//void light() {
+//	// Called for every pixel for every light affecting the CanvasItem.
+//	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hongp"]
+shader = SubResource("Shader_5anj3")
+shader_parameter/progress = 0.0
+
+[sub_resource type="Shader" id="Shader_i44qu"]
+code = "shader_type canvas_item;
+
+uniform float progress;
+
+
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	vec2 offset = vec2(progress, 0);
+	vec2 uv = UV + offset;
+	uv = vec2(uv.x - floor(uv.x), uv.y - floor(uv.y));
+	COLOR = texture(TEXTURE, uv);
+}
+
+//void light() {
+//	// Called for every pixel for every light affecting the CanvasItem.
+//	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6mhbi"]
+shader = SubResource("Shader_i44qu")
+shader_parameter/progress = 0.0
+
+[sub_resource type="Shader" id="Shader_y7aik"]
+code = "shader_type canvas_item;
+
+uniform float progress;
+
+
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	vec2 offset = vec2(progress, 0);
+	vec2 uv = UV + offset;
+	uv = vec2(uv.x - floor(uv.x), uv.y - floor(uv.y));
+	COLOR = texture(TEXTURE, uv);
+}
+
+//void light() {
+//	// Called for every pixel for every light affecting the CanvasItem.
+//	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pdfn4"]
+shader = SubResource("Shader_y7aik")
+shader_parameter/progress = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v5iu8"]
+shader = SubResource("Shader_y7aik")
+shader_parameter/progress = 0.0
+
+[node name="Stage" type="Node" unique_id=1378298945 node_paths=PackedStringArray("far", "mid", "close", "ground", "fire")]
+script = ExtResource("1_cfr52")
+far = NodePath("Background/Far")
+mid = NodePath("Background/Mid")
+close = NodePath("Background/Close")
+ground = NodePath("Ground/GroundSprite")
+mid_distance = 6.0
+close_distance = 3.5
+ground_distance = 2.56
+fire = NodePath("Fire")
+
+[node name="Sky" type="ColorRect" parent="." unique_id=958360555]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.14229006, 0.7104399, 0.9438708, 1)
+
+[node name="Background" type="Node2D" parent="." unique_id=532777586]
+scale = Vector2(0.37, 0.37)
+
+[node name="Far" type="Sprite2D" parent="Background" unique_id=1524781807]
+material = SubResource("ShaderMaterial_hongp")
+position = Vector2(0, -70.27027)
+texture = ExtResource("6_ep7xg")
+centered = false
+
+[node name="Mid" type="Sprite2D" parent="Background" unique_id=802702919]
+material = SubResource("ShaderMaterial_6mhbi")
+position = Vector2(0, -70.27027)
+texture = ExtResource("8_hongp")
+centered = false
+
+[node name="MidBGObjectSpawner2" parent="Background" unique_id=1269840366 instance=ExtResource("3_7kq2w")]
+position = Vector2(4210.8105, 1318.9188)
+scale = Vector2(2.7027028, 2.7027028)
+obstacles_pool = Array[PackedScene]([ExtResource("7_pdfn4"), ExtResource("7_pv4ae"), ExtResource("7_kyo7w"), ExtResource("8_kyo7w"), ExtResource("9_12mlu")])
+distance = 2.5
+obstacle_min_wait = 2.0
+
+[node name="CloseBGObjectSpawner" parent="Background" unique_id=1602052652 instance=ExtResource("3_7kq2w")]
+position = Vector2(4208.1084, 1367.5675)
+scale = Vector2(2.7027028, 2.7027028)
+obstacles_pool = Array[PackedScene]([ExtResource("7_pdfn4"), ExtResource("7_pv4ae"), ExtResource("7_kyo7w"), ExtResource("8_kyo7w"), ExtResource("9_12mlu")])
+distance = 2.0
+obstacle_max_wait = 2.0
+
+[node name="Close" type="Sprite2D" parent="Background" unique_id=236709537]
+material = SubResource("ShaderMaterial_pdfn4")
+position = Vector2(0, -70.27027)
+texture = ExtResource("9_i44qu")
+centered = false
+
+[node name="Ground" parent="." unique_id=1340509953 instance=ExtResource("1_53wmw")]
+position = Vector2(0, 29)
+
+[node name="GroundSprite" type="Sprite2D" parent="Ground" unique_id=145785299]
+material = SubResource("ShaderMaterial_v5iu8")
+position = Vector2(0, 43)
+scale = Vector2(0.37, 0.37)
+texture = ExtResource("10_v5iu8")
+centered = false
+
+[node name="ObstacleSpawner" parent="Ground" unique_id=1376732065 instance=ExtResource("3_7kq2w")]
+position = Vector2(1557, 548)
+obstacles_pool = Array[PackedScene]([ExtResource("9_6mhbi"), ExtResource("9_y7aik"), ExtResource("12_d6eks")])
+
+[node name="Player" parent="." unique_id=267636814 instance=ExtResource("1_o78d5")]
+position = Vector2(249, 413)
+
+[node name="Fire" parent="." unique_id=233998115 instance=ExtResource("8_i44qu")]
+position = Vector2(-313, 333)
+
+[node name="ItemSpawner" parent="." unique_id=887145691 instance=ExtResource("3_7kq2w")]
+position = Vector2(1557.9999, 419)
+obstacles_pool = Array[PackedScene]([ExtResource("3_xrl45"), ExtResource("19_cq7qg"), ExtResource("20_3nox7")])
+obstacle_min_wait = 5.0
+obstacle_max_wait = 10.0
+
+[node name="StageUI" parent="." unique_id=8815888 instance=ExtResource("5_hmf2r")]

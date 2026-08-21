@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://b2iyeio20ygeu"]
+
+[ext_resource type="PackedScene" uid="uid://cqqvgh5p8vqdd" path="res://game/collectables/entry.tscn" id="1_2a8fn"]
+
+[node name="Entry" unique_id=769081194 instance=ExtResource("1_2a8fn")]
+
+[node name="Label" parent="VBoxContainer/Control2" parent_id_path=PackedInt32Array(399066398) index="0" unique_id=1948912237]
+offset_right = 1111.0
+offset_bottom = 153.0
+text = "Hoje o bioma conserva apenas vinte% da sua área total, tendo sido descaracterizado pelo aumento das pastagens de gado e pelas extensas plantações de soja, cana, algodão e eucalipto."

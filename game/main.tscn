@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://crk5drtnhart4"]
+
+[ext_resource type="Script" uid="uid://ccbbmugo6x8su" path="res://game/main.gd" id="1_emt18"]
+[ext_resource type="AudioStream" uid="uid://g225smgpgmy2" path="res://assets/sfx/button.mp3" id="2_emt18"]
+[ext_resource type="PackedScene" uid="uid://cpwrr154vv77m" path="res://game/menus/main_menu.tscn" id="2_xtpaf"]
+
+[node name="Main" type="Node" unique_id=1341724009]
+script = ExtResource("1_emt18")
+button_sound = ExtResource("2_emt18")
+
+[node name="MainMenu" parent="." unique_id=885032506 instance=ExtResource("2_xtpaf")]

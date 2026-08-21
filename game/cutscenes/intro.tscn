@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://vbjxpi4hihuh"]
+
+[ext_resource type="Texture2D" uid="uid://bhm6py8ybf5fn" path="res://assets/cutscenes/intro.png" id="1_0dm2o"]
+[ext_resource type="Script" uid="uid://dy84lo51yk074" path="res://game/cutscenes/intro.gd" id="1_4x02e"]
+[ext_resource type="AudioStream" uid="uid://dgqc1sejjop7w" path="res://assets/bgm/intro.mp3" id="3_4kgca"]
+
+[sub_resource type="Animation" id="Animation_4x02e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Intro:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(571.5, 781)]
+}
+
+[sub_resource type="Animation" id="Animation_0dm2o"]
+resource_name = "intro"
+length = 12.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Intro:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(571.5, 781), Vector2(571.5, -139.99994)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(12),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"finish"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4x02e"]
+_data = {
+&"RESET": SubResource("Animation_4x02e"),
+&"intro": SubResource("Animation_0dm2o")
+}
+
+[node name="Intro" type="Node2D" unique_id=2048859700]
+script = ExtResource("1_4x02e")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=19020559]
+libraries/ = SubResource("AnimationLibrary_4x02e")
+
+[node name="Intro" type="Sprite2D" parent="." unique_id=405420797]
+position = Vector2(571.5, 781)
+scale = Vector2(0.6340263, 0.63402617)
+texture = ExtResource("1_0dm2o")
+
+[node name="Label" type="Label" parent="." unique_id=418576214]
+offset_left = 14.0
+offset_top = 16.0
+offset_right = 571.0
+offset_bottom = 66.0
+theme_override_font_sizes/font_size = 49
+text = "Aperte qualquer botão do teclado para avançar"
+
+[node name="Intro2" type="AudioStreamPlayer" parent="." unique_id=1514068354]
+stream = ExtResource("3_4kgca")
+autoplay = true

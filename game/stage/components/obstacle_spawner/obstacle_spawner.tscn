@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://c1m3a8ynleuob"]
+
+[ext_resource type="Script" uid="uid://dh7u7wpcbirvc" path="res://game/stage/components/obstacle_spawner/obstacle_spawner.gd" id="1_rmw51"]
+
+[node name="ObstacleSpawner" type="Node2D" unique_id=887145691 node_paths=PackedStringArray("spawn_timer")]
+script = ExtResource("1_rmw51")
+spawn_timer = NodePath("SpawnTimer")
+
+[node name="SpawnTimer" type="Timer" parent="." unique_id=227486477]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

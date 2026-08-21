@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bng2ctpinhp25"]
+
+[ext_resource type="PackedScene" uid="uid://tgl7wuert5wl" path="res://game/collectables/item.tscn" id="1_hgfrr"]
+[ext_resource type="PackedScene" uid="uid://b2iyeio20ygeu" path="res://game/collectables/entries/entry2.tscn" id="2_hgfrr"]
+
+[node name="Obstacle" unique_id=431197371 instance=ExtResource("1_hgfrr")]
+
+[node name="Hitbox" parent="." index="1" unique_id=106695997]
+entry_scene = ExtResource("2_hgfrr")

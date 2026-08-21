@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bhyfqy2r45erd"]
+
+[ext_resource type="PackedScene" uid="uid://dkm051efg7sti" path="res://game/menus/configs_tab.tscn" id="1_ckjj0"]
+[ext_resource type="Script" uid="uid://3qqxccaggxqa" path="res://game/menus/configs_tab_game.gd" id="2_kjjap"]
+
+[node name="MarginContainerConfigs" unique_id=685625410 instance=ExtResource("1_ckjj0")]
+process_mode = 2
+visible = true
+script = ExtResource("2_kjjap")
+
+[node name="BackToMenu" type="Button" parent="MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1645669305) index="0" unique_id=2002015600]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Menu Principal"
+
+[node name="Spacing2" type="Label" parent="MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1645669305) index="1" unique_id=1604468569]
+layout_mode = 2
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/BackToMenu" to="." method="_on_back_to_menu_pressed"]

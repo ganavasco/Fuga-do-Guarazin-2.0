@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://b87pe6flbtfn1"]
+
+[ext_resource type="Script" uid="uid://dkyltkalwlfie" path="res://game/obstacles/obstacle.gd" id="1_ugwlf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c8o14"]
+size = Vector2(90.000015, 233.75005)
+
+[node name="Obstacle" type="Node2D" unique_id=431197371]
+scale = Vector2(0.79999983, 0.79999983)
+script = ExtResource("1_ugwlf")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=352728666]
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=106695997]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=225902749]
+position = Vector2(0, -75.625015)
+shape = SubResource("RectangleShape2D_c8o14")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=435843657]
+rect = Rect2(-90, -208, 180, 216)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

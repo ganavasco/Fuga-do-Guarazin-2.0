@@ -1,0 +1,118 @@
+[gd_scene format=3 uid="uid://dtgiadicix6a5"]
+
+[ext_resource type="Script" uid="uid://ck3tm15in0roa" path="res://game/player/player.gd" id="1_a4w0n"]
+[ext_resource type="Script" uid="uid://dpfy1qsnaoj8r" path="res://game/player/player_components/player_input.gd" id="1_obar5"]
+[ext_resource type="Script" uid="uid://cbi7yvqasi5lb" path="res://game/player/player_components/player_movement.gd" id="2_8soms"]
+[ext_resource type="Script" uid="uid://hftq03iqrop2" path="res://game/player/player_components/player_jump.gd" id="2_b2mth"]
+[ext_resource type="Script" uid="uid://cvts1b27cvjpw" path="res://game/player/player_components/player_fastfall.gd" id="5_5fytw"]
+[ext_resource type="Script" uid="uid://bnpr3dn6i33v1" path="res://game/player/player_components/player_hurtbox.gd" id="6_4ste8"]
+[ext_resource type="Texture2D" uid="uid://bq8l6auyfxa7k" path="res://assets/player/guara_0000.png" id="7_gb4gm"]
+[ext_resource type="Texture2D" uid="uid://c31txfs3wf6r5" path="res://assets/player/guara_0001.png" id="8_uv2nh"]
+[ext_resource type="Texture2D" uid="uid://deprsw0wjhwfi" path="res://assets/player/guara_0002.png" id="9_n270p"]
+[ext_resource type="Texture2D" uid="uid://bw6k2trtuhki1" path="res://assets/player/guara_0003.png" id="10_3ep63"]
+[ext_resource type="Texture2D" uid="uid://1tlmi8b3xa5m" path="res://assets/player/guara_0004.png" id="11_rqcxa"]
+[ext_resource type="Script" uid="uid://mq077yu4xl8k" path="res://game/player/player_animation.gd" id="12_uv2nh"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2mv0n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_uv2nh")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_gb4gm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_uv2nh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_n270p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_3ep63")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_rqcxa")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_gb4gm")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_4ste8"]
+a = Vector2(0, -100)
+b = Vector2(0, 100)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5fytw"]
+radius = 32.0
+height = 76.0
+
+[node name="Player" type="CharacterBody2D" unique_id=267636814]
+collision_mask = 2
+script = ExtResource("1_a4w0n")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=155656760]
+scale = Vector2(0.39028776, 0.35542172)
+sprite_frames = SubResource("SpriteFrames_2mv0n")
+animation = &"run"
+
+[node name="GroundCollision" type="CollisionShape2D" parent="." unique_id=68821905]
+position = Vector2(0, 63)
+rotation = -1.5707964
+shape = SubResource("SegmentShape2D_4ste8")
+
+[node name="Input" type="Node" parent="." unique_id=1934978380]
+script = ExtResource("1_obar5")
+
+[node name="Movement" type="Node" parent="." unique_id=962099206 node_paths=PackedStringArray("player")]
+script = ExtResource("2_8soms")
+player = NodePath("..")
+
+[node name="Jump" type="Node" parent="Movement" unique_id=107965941 node_paths=PackedStringArray("player", "jump_buffer")]
+script = ExtResource("2_b2mth")
+player = NodePath("../..")
+jump_buffer = NodePath("JumpBuffer")
+
+[node name="JumpBuffer" type="Timer" parent="Movement/Jump" unique_id=361884299]
+wait_time = 0.05
+one_shot = true
+
+[node name="Fastfall" type="Node" parent="Movement" unique_id=108617322 node_paths=PackedStringArray("player")]
+script = ExtResource("5_5fytw")
+player = NodePath("../..")
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1014079314 node_paths=PackedStringArray("player")]
+collision_mask = 4
+script = ExtResource("6_4ste8")
+player = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1689625146]
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_5fytw")
+
+[node name="HealTimer" type="Timer" parent="Hurtbox" unique_id=996731623]
+wait_time = 5.0
+
+[node name="Animation" type="Node" parent="." unique_id=990364345 node_paths=PackedStringArray("player", "animated_sprite")]
+script = ExtResource("12_uv2nh")
+player = NodePath("..")
+animated_sprite = NodePath("../AnimatedSprite2D")
+
+[connection signal="fastfall_pressed" from="Input" to="Movement/Fastfall" method="fastfall"]
+[connection signal="jump_pressed" from="Input" to="Movement/Jump" method="_on_input_jump_pressed"]
+[connection signal="timeout" from="Movement/Jump/JumpBuffer" to="Movement/Jump" method="_on_jump_buffer_timeout"]
+[connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_area_entered"]
+[connection signal="timeout" from="Hurtbox/HealTimer" to="Hurtbox" method="_on_heal_timer_timeout"]

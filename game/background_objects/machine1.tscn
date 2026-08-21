@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bicxrt74ykf4c"]
+
+[ext_resource type="PackedScene" uid="uid://60tb6gm1rcgy" path="res://game/background_objects/bg_object.tscn" id="1_me26q"]
+[ext_resource type="Texture2D" uid="uid://c07broqvx3vp0" path="res://assets/background_objects/machine1.png" id="2_tnqj7"]
+
+[node name="Obstacle" unique_id=431197371 instance=ExtResource("1_me26q")]
+
+[node name="Sprite" parent="." index="0" unique_id=1377024166]
+position = Vector2(-10.000002, -107.50002)
+scale = Vector2(0.27173913, 0.27173918)
+texture = ExtResource("2_tnqj7")
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="1" unique_id=435843657]
+rect = Rect2(-186.25003, -228.75005, 372.50006, 257.5001)

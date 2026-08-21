@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bf8tv03cqkrco"]
+
+[ext_resource type="PackedScene" uid="uid://cqqvgh5p8vqdd" path="res://game/collectables/entry.tscn" id="1_b0nip"]
+
+[node name="Entry" unique_id=769081194 instance=ExtResource("1_b0nip")]
+
+[node name="Label" parent="VBoxContainer/Control2" parent_id_path=PackedInt32Array(399066398) index="0" unique_id=1948912237]
+offset_right = 1111.0
+offset_bottom = 153.0
+text = "Segundo estudo do MapBiomas, mais da metade da área desmatada do Brasil corresponde à do Cerrado, principalmente na região do Matopiba (Maranhão, Tocantins, Piauí e Bahia), por causa da expansão da fronteira agrícola."

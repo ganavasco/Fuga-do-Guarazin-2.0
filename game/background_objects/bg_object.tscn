@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://60tb6gm1rcgy"]
+
+[ext_resource type="Script" uid="uid://dkyltkalwlfie" path="res://game/obstacles/obstacle.gd" id="1_2yx88"]
+
+[node name="Obstacle" type="Node2D" unique_id=431197371]
+scale = Vector2(0.79999983, 0.79999983)
+script = ExtResource("1_2yx88")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1377024166]
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=435843657]
+rect = Rect2(-90, -208, 180, 216)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://s3m1yfmfc7s3"]
+
+[ext_resource type="PackedScene" uid="uid://b87pe6flbtfn1" path="res://game/obstacles/obstacle.tscn" id="1_t57ti"]
+[ext_resource type="Texture2D" uid="uid://c4lig3bt205u3" path="res://assets/obstacles/trunk3.png" id="2_hcvgy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gpdx4"]
+size = Vector2(335.00006, 66.25002)
+
+[node name="Obstacle" unique_id=431197371 instance=ExtResource("1_t57ti")]
+
+[node name="Sprite" parent="." index="0" unique_id=352728666]
+position = Vector2(0, -81.250015)
+scale = Vector2(0.52568495, 0.52568495)
+texture = ExtResource("2_hcvgy")
+
+[node name="CollisionShape2D" parent="Hitbox" parent_id_path=PackedInt32Array(106695997) index="0" unique_id=225902749]
+position = Vector2(0, -33.125008)
+shape = SubResource("RectangleShape2D_gpdx4")
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="2" unique_id=435843657]
+rect = Rect2(-255.00005, -208, 510.0001, 216)

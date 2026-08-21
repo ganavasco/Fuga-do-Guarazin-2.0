@@ -1,0 +1,145 @@
+[gd_scene format=3 uid="uid://cpwrr154vv77m"]
+
+[ext_resource type="Script" uid="uid://c6k3nnrvfaf4j" path="res://game/menus/main_menu.gd" id="1_db0cf"]
+[ext_resource type="FontFile" uid="uid://ul45ui5pjd6" path="res://assets/fonts/KOMIKABG.ttf" id="2_arsjm"]
+[ext_resource type="PackedScene" uid="uid://dkm051efg7sti" path="res://game/menus/configs_tab.tscn" id="2_tfb2k"]
+[ext_resource type="PackedScene" uid="uid://cncta4dt5kdy7" path="res://game/menus/collectibles_tab.tscn" id="3_htn6l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tfb2k"]
+
+[node name="MainMenu" type="Node" unique_id=885032506 node_paths=PackedStringArray("credits_tab", "configs_tab", "collectibles_tab")]
+script = ExtResource("1_db0cf")
+credits_tab = NodePath("Credits")
+configs_tab = NodePath("Configs")
+collectibles_tab = NodePath("Collectibles")
+
+[node name="Sky" type="ColorRect" parent="." unique_id=485558412]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.14229006, 0.7104399, 0.9438708, 1)
+
+[node name="MarginContainerMenu" type="MarginContainer" parent="." unique_id=720839691]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainerMenu" unique_id=1242425115]
+layout_mode = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="MarginContainerMenu/VBoxContainer" unique_id=1363641549]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92559785, 0.40269214, 0.25595722, 1)
+theme_override_font_sizes/font_size = 72
+text = "A FUGA DE GUARAZIN"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainerMenu/VBoxContainer" unique_id=1837130658]
+layout_mode = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_right = 200
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainerMenu/VBoxContainer/MarginContainer" unique_id=785482761]
+layout_mode = 2
+
+[node name="Start" type="Button" parent="MarginContainerMenu/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1809386257 groups=["Button"]]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxEmpty_tfb2k")
+text = "Começar"
+
+[node name="Collectibles" type="Button" parent="MarginContainerMenu/VBoxContainer/MarginContainer/VBoxContainer" unique_id=437046575 groups=["Button"]]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxEmpty_tfb2k")
+text = "Colecionáveis"
+
+[node name="Configs" type="Button" parent="MarginContainerMenu/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1739735592 groups=["Button"]]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxEmpty_tfb2k")
+text = "Configurações"
+
+[node name="Credits" type="Button" parent="MarginContainerMenu/VBoxContainer/MarginContainer/VBoxContainer" unique_id=201073627 groups=["Button"]]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxEmpty_tfb2k")
+text = "Créditos"
+
+[node name="Quit" type="Button" parent="MarginContainerMenu/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1627351337 groups=["Button"]]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxEmpty_tfb2k")
+text = "Sair"
+
+[node name="Credits" type="MarginContainer" parent="." unique_id=1596270594]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -313.0
+offset_right = 313.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 20
+
+[node name="ColorRect" type="ColorRect" parent="Credits" unique_id=548551326]
+layout_mode = 2
+color = Color(0, 0, 0, 0.9137255)
+
+[node name="MarginContainer" type="MarginContainer" parent="Credits" unique_id=1255702472]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Credits/MarginContainer" unique_id=834971971]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="Credits/MarginContainer/VBoxContainer" unique_id=1696537245]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_arsjm")
+theme_override_font_sizes/font_size = 21
+text = "Fontes:
+Snacker Comic
+https://www.1001freefonts.com/snacker-comic.font
+
+Komika Poster
+https://www.1001freefonts.com/komika-poster.font
+
+VFX: --"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ExitCredits" type="Button" parent="Credits/MarginContainer/VBoxContainer" unique_id=1854295983]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "OK"
+
+[node name="Configs" parent="." unique_id=685625410 instance=ExtResource("2_tfb2k")]
+visible = false
+
+[node name="Collectibles" parent="." unique_id=687570401 instance=ExtResource("3_htn6l")]
+visible = false
+
+[connection signal="pressed" from="MarginContainerMenu/VBoxContainer/MarginContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="MarginContainerMenu/VBoxContainer/MarginContainer/VBoxContainer/Collectibles" to="." method="_on_collectibles_pressed"]
+[connection signal="pressed" from="MarginContainerMenu/VBoxContainer/MarginContainer/VBoxContainer/Configs" to="." method="_on_configs_pressed"]
+[connection signal="pressed" from="MarginContainerMenu/VBoxContainer/MarginContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="MarginContainerMenu/VBoxContainer/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Credits/MarginContainer/VBoxContainer/ExitCredits" to="." method="_on_exit_credits_pressed"]
