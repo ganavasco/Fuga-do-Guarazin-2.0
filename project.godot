@@ -26,6 +26,7 @@ Button=""
 
 [gui]
 
+theme/custom="uid://b2yo2yp4aesx8"
 theme/custom_font="uid://dqec8u5etbmkp"
 
 [input]

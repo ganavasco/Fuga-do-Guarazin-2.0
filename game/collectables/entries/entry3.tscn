@@ -3,8 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://cqqvgh5p8vqdd" path="res://game/collectables/entry.tscn" id="1_ut51b"]
 
 [node name="Entry" unique_id=769081194 instance=ExtResource("1_ut51b")]
+custom_minimum_size = Vector2(24.265, 86.93)
 
-[node name="Label" parent="VBoxContainer/Control2" parent_id_path=PackedInt32Array(399066398) index="0" unique_id=1948912237]
-offset_right = 1111.0
-offset_bottom = 153.0
+[node name="VBoxContainer" parent="." index="0" unique_id=2073429609]
+anchors_preset = 10
+anchor_bottom = 0.0
+offset_bottom = 103.855
+grow_vertical = 1
+
+[node name="Label" parent="VBoxContainer/VBoxContainer" parent_id_path=PackedInt32Array(1983980545) index="1" unique_id=1948912237]
 text = "A caça ilegal, o contrabando de espécies e as queimadas, ameaçam o habitat de muitas espécies, levando à sua extinção."

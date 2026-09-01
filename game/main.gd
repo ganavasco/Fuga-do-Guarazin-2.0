@@ -20,7 +20,7 @@ func change_scene(new_scene: PackedScene) -> void:
 	MainSingleton.main.get_child(0).queue_free()
 	var new_scene_instance = new_scene.instantiate()
 	MainSingleton.main.add_child(new_scene_instance)
-	return 
+	return
 	# Add button sounds
 	var buttons: Array = get_tree().get_nodes_in_group("Button")
 	for inst in buttons:

@@ -3,37 +3,41 @@
 [ext_resource type="Texture2D" uid="uid://cyj3t3j6esiws" path="res://assets/collectibles/item.png" id="1_aclpb"]
 
 [node name="Entry" type="Control" unique_id=769081194]
+custom_minimum_size = Vector2(0, 140)
 layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="VBoxContainer" type="HBoxContainer" parent="." unique_id=2073429609]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="HBoxContainer" parent="." unique_id=2073429609]
-layout_mode = 1
-offset_right = 133.0
-offset_bottom = 128.0
-
-[node name="Control" type="Control" parent="VBoxContainer" unique_id=1369842842]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer" unique_id=435009834]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Control" unique_id=435009834]
-layout_mode = 0
-offset_left = 4.0
-offset_right = 123.0
-offset_bottom = 119.0
+size_flags_vertical = 0
 texture = ExtResource("1_aclpb")
 expand_mode = 1
+stretch_mode = 5
 
-[node name="Control2" type="Control" parent="VBoxContainer" unique_id=399066398]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer" unique_id=1983980545]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Space" type="Control" parent="VBoxContainer/VBoxContainer" unique_id=1006169162]
+custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/Control2" unique_id=1948912237]
-layout_mode = 0
-offset_left = 126.0
-offset_top = 48.0
-offset_right = 127.0
-offset_bottom = 79.0
-text = "sdasdasdsdasdasdsdasdasdsdasdasdsdasdasdsdasdasdsdasdasdsdasdasdsdasdasdsdasdasdsdasdasdsdasdasdsdasdasdsdasdasdsdasdasd"
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer" unique_id=1948912237]
+custom_minimum_size = Vector2(201.57, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 36
+text = "sdasdas dsdas dasdsdasdasdsdasdasdsdasd asdsd asdas dsdasdasds dasdasdsda sdasdsdasdas dsdasdasds dasdasdsdasdasdsdasdasdsdasdasd, sdasdasdsdasdasdsdasdasdsdasdasdsdasdasdsdasdasdsdasdasdsdasdasdsdasdasdsdasdasdsdasdasdsdasdasdsdasdasdsdasdasdsdasdasd"
 autowrap_mode = 2
