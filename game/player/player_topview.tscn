@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://dknkrfq3k6l0x"]
+
+[ext_resource type="Script" uid="uid://0mt5r30rilgl" path="res://game/player/player_topview.gd" id="1_ske2w"]
+[ext_resource type="Texture2D" uid="uid://drw1tfcnutny7" path="res://assets/player/lobo-guara.png" id="2_ske2w"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ske2w"]
+
+[sub_resource type="Animation" id="Animation_ske2w"]
+resource_name = "IDLE"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_rhwhp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_we2w2"]
+resource_name = "WALK"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uvrlw"]
+_data = {
+&"IDLE": SubResource("Animation_ske2w"),
+&"RESET": SubResource("Animation_rhwhp"),
+&"WALK": SubResource("Animation_we2w2")
+}
+
+[node name="PlayerTopview" type="CharacterBody2D" unique_id=673716047 node_paths=PackedStringArray("anim_player", "sprite")]
+collision_mask = 6
+script = ExtResource("1_ske2w")
+anim_player = NodePath("AnimationPlayer")
+sprite = NodePath("Sprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1580694916]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_ske2w")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=55217302]
+position = Vector2(0, -4.43)
+texture = ExtResource("2_ske2w")
+vframes = 2
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=806368986]
+zoom = Vector2(3, 3)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1432854039]
+libraries/ = SubResource("AnimationLibrary_uvrlw")
+autoplay = &"RESET"
