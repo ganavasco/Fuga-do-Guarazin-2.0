@@ -24,6 +24,12 @@ MainSingleton="*uid://ccbbmugo6x8su"
 
 enabled=PackedStringArray("res://addons/TileMapDual/plugin.cfg")
 
+[file_customization]
+
+folder_colors={
+"res://assets/": "yellow"
+}
+
 [global_group]
 
 Button=""
