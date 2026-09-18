@@ -1,0 +1,138 @@
+[gd_scene format=3 uid="uid://dfmvs8kyxf6x7"]
+
+[ext_resource type="Script" uid="uid://cnbseg2mpm08" path="res://game/characters/hunter.gd" id="1_5kiwf"]
+[ext_resource type="Texture2D" uid="uid://c0q50c8ehxhdd" path="res://assets/characters/hunter/hunter.png" id="1_rqkhn"]
+[ext_resource type="Script" uid="uid://bca45pxqe0c11" path="res://singletons/scripts/state_machine.gd" id="2_q7it0"]
+[ext_resource type="Script" uid="uid://c6x180pbxdkef" path="res://game/characters/idle.gd" id="3_oxwj5"]
+[ext_resource type="Script" uid="uid://dip1jjdigku3y" path="res://game/characters/chase.gd" id="4_q5llr"]
+[ext_resource type="Script" uid="uid://e80w502q7uni" path="res://game/characters/label_debug.gd" id="6_b4l7d"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dy755"]
+radius = 5.0
+height = 46.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oxwj5"]
+radius = 77.10383
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b4l7d"]
+radius = 135.18137
+
+[sub_resource type="Animation" id="Animation_b4l7d"]
+resource_name = "CHASE"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_tcl7j"]
+resource_name = "IDLE"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_hbbxc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u07f4"]
+_data = {
+&"CHASE": SubResource("Animation_b4l7d"),
+&"IDLE": SubResource("Animation_tcl7j"),
+&"RESET": SubResource("Animation_hbbxc")
+}
+
+[node name="Hunter" type="CharacterBody2D" unique_id=1218699405 node_paths=PackedStringArray("animation_p", "sprite")]
+collision_layer = 16
+collision_mask = 3
+script = ExtResource("1_5kiwf")
+animation_p = NodePath("AnimationPlayer")
+sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1839479521]
+position = Vector2(0, -24)
+texture = ExtResource("1_rqkhn")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=194221099]
+position = Vector2(0, -24)
+shape = SubResource("CapsuleShape2D_dy755")
+
+[node name="StateMachine" type="Node2D" parent="." unique_id=1755918075 node_paths=PackedStringArray("initial_state", "character")]
+script = ExtResource("2_q7it0")
+initial_state = NodePath("Idle")
+character = NodePath("..")
+
+[node name="Idle" type="Node2D" parent="StateMachine" unique_id=1558843579]
+script = ExtResource("3_oxwj5")
+
+[node name="Area2DEntered" type="Area2D" parent="StateMachine/Idle" unique_id=235749544]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StateMachine/Idle/Area2DEntered" unique_id=335298634]
+position = Vector2(0, -24)
+shape = SubResource("CircleShape2D_oxwj5")
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="Chase" type="Node2D" parent="StateMachine" unique_id=1165314797]
+script = ExtResource("4_q5llr")
+walk_speed = 50.0
+
+[node name="Area2DExited" type="Area2D" parent="StateMachine/Chase" unique_id=1897502700]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StateMachine/Chase/Area2DExited" unique_id=13062072]
+position = Vector2(0, -25)
+shape = SubResource("CircleShape2D_b4l7d")
+debug_color = Color(1, 1, 0, 0.15294118)
+
+[node name="LabelDebug" type="Label" parent="." unique_id=966883024 node_paths=PackedStringArray("state_machine")]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = -65.19
+offset_right = 20.0
+offset_bottom = -49.190002
+grow_horizontal = 2
+text = "State"
+horizontal_alignment = 1
+script = ExtResource("6_b4l7d")
+state_machine = NodePath("../StateMachine")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2032388079]
+libraries/ = SubResource("AnimationLibrary_u07f4")
+autoplay = &"IDLE"
+
+[connection signal="body_entered" from="StateMachine/Idle/Area2DEntered" to="StateMachine/Idle" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="StateMachine/Chase/Area2DExited" to="StateMachine/Chase" method="_on_area_2d_body_exited"]

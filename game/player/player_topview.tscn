@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cjwkba78ciux"]
 
-[ext_resource type="Script" path="res://game/player/player_topview.gd" id="1_ske2w"]
+[ext_resource type="Script" uid="uid://0mt5r30rilgl" path="res://game/player/player_topview.gd" id="1_ske2w"]
 [ext_resource type="Texture2D" uid="uid://drw1tfcnutny7" path="res://assets/player/lobo-guara.png" id="2_ske2w"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ske2w"]
@@ -77,7 +77,7 @@ _data = {
 &"WALK_UP": SubResource("Animation_uvrlw")
 }
 
-[node name="PlayerTopview" type="CharacterBody2D" unique_id=673716047 node_paths=PackedStringArray("anim_player", "sprite")]
+[node name="PlayerTopview" type="CharacterBody2D" unique_id=673716047 node_paths=PackedStringArray("anim_player", "sprite") groups=["player"]]
 collision_mask = 6
 script = ExtResource("1_ske2w")
 anim_player = NodePath("AnimationPlayer")
@@ -94,6 +94,7 @@ hframes = 2
 vframes = 2
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=806368986]
+visible = false
 zoom = Vector2(3, 3)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1432854039]

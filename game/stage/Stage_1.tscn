@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://cjk8nronimk5r" path="res://addons/TileMapDual/tile_map_dual.gd" id="4_eyb3d"]
 [ext_resource type="Texture2D" uid="uid://2cwcl01h317l" path="res://assets/tileset/piskel/riacho.png" id="4_uy0if"]
 [ext_resource type="PackedScene" uid="uid://cjwkba78ciux" path="res://game/player/player_topview.tscn" id="5_c6vql"]
+[ext_resource type="PackedScene" uid="uid://dfmvs8kyxf6x7" path="res://game/characters/hunter.tscn" id="8_uy0if"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kxee4"]
 texture = ExtResource("4_48r53")
@@ -523,3 +524,6 @@ tile_set = SubResource("TileSet_eyb3d")
 
 [node name="PlayerTopview" parent="." unique_id=673716047 instance=ExtResource("5_c6vql")]
 position = Vector2(0, 10)
+
+[node name="Hunter" parent="." unique_id=1218699405 instance=ExtResource("8_uy0if")]
+position = Vector2(235, 75)
