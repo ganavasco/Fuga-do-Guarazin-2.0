@@ -24,3 +24,8 @@ func go_to_advanced() -> void:
 
 func go_to_full_advanced() -> void:
 	target_pos = full_advanced_pos.position
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		body.game_over()

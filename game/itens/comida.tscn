@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cvc8wmxv5vkfu"]
+
+[ext_resource type="Script" uid="uid://dequdvfb0vw4h" path="res://game/itens/comida.gd" id="1_cihl7"]
+[ext_resource type="Texture2D" uid="uid://dr1wetgdy070s" path="res://icon.svg" id="1_vvc35"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vvc35"]
+size = Vector2(12, 12)
+
+[node name="Comida" type="Area2D" unique_id=1268355889]
+collision_layer = 8
+script = ExtResource("1_cihl7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=143864328]
+shape = SubResource("RectangleShape2D_vvc35")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1525837240]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_vvc35")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

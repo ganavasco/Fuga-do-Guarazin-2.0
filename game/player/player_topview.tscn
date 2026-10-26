@@ -7,6 +7,7 @@
 
 [sub_resource type="Animation" id="Animation_ske2w"]
 resource_name = "IDLE"
+length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -18,6 +19,23 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_k0xei"]
+resource_name = "JUMP"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1333, 0.2666),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [2, 3, 4]
 }
 
 [sub_resource type="Animation" id="Animation_rhwhp"]
@@ -49,7 +67,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0, 2]
+"values": [0, 1]
 }
 
 [sub_resource type="Animation" id="Animation_uvrlw"]
@@ -72,6 +90,7 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uvrlw"]
 _data = {
 &"IDLE": SubResource("Animation_ske2w"),
+&"JUMP": SubResource("Animation_k0xei"),
 &"RESET": SubResource("Animation_rhwhp"),
 &"WALK": SubResource("Animation_we2w2"),
 &"WALK_UP": SubResource("Animation_uvrlw")
@@ -90,13 +109,23 @@ shape = SubResource("CapsuleShape2D_ske2w")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=55217302]
 position = Vector2(0, -4.43)
 texture = ExtResource("2_ske2w")
-hframes = 2
-vframes = 2
+vframes = 5
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=806368986]
 visible = false
 zoom = Vector2(3, 3)
+position_smoothing_enabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1432854039]
 libraries/ = SubResource("AnimationLibrary_uvrlw")
 autoplay = &"RESET"
+
+[node name="JumpTimer" type="Timer" parent="." unique_id=1151379947]
+wait_time = 0.4
+one_shot = true
+
+[node name="Label" type="Label" parent="." unique_id=1119401034]
+offset_right = 40.0
+offset_bottom = 16.0
+
+[connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]
