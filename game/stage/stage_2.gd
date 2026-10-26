@@ -7,8 +7,8 @@ extends Node2D
 @onready var game_over_label : Control = $CanvasLayer/GameOver
 @onready var player_spawn : Marker2D = $PlayerSpawn
 @onready var fire_spawn : Marker2D = $FirePosition
-@onready var estamina : TextureProgressBar = $CanvasLayer/VBoxContainer/Estamina
-@onready var timer_estamina : Timer = $CanvasLayer/VBoxContainer/Timer
+@onready var estamina : TextureProgressBar = $CanvasLayer/HUD/VBoxContainer/Estamina
+@onready var timer_estamina : Timer = $CanvasLayer/HUD/VBoxContainer/Timer
 
 var update_pos : bool = false
 var time : float = 0.0
@@ -43,6 +43,7 @@ func new_game() -> void:
 	player.game_over_called = false
 	#player.fliph = false
 	player.position = player_spawn.position
+	reset_items()
 	fire_controler.position = fire_spawn.position
 	game_over_label.hide()
 	player.use_camera(false)
@@ -75,3 +76,11 @@ func _on_timer_timeout() -> void:
 
 func _on_comida_comeu(estamina_value: float) -> void:
 	estamina.value += estamina_value
+
+func reset_items() -> void:
+	get_tree().call_group("Item", "reset_item")
+
+
+func _on_win_area_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		print("win")

@@ -7,4 +7,9 @@ signal comeu(estamina_value : float)
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		comeu.emit(replenish_value)
-		queue_free()
+		hide()
+		set_deferred("process_mode", Node.PROCESS_MODE_DISABLED)
+
+func reset_item() -> void:
+	show()
+	set_deferred("process_mode", Node.PROCESS_MODE_INHERIT)
