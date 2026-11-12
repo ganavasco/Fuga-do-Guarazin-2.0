@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://btelxtxfq5853"]
+
+[node name="Stage3" type="Node2D" unique_id=992180107]
+
+[node name="Label" type="Label" parent="." unique_id=625116207]
+offset_left = -2.0
+offset_right = 699.0
+offset_bottom = 128.0
+theme_override_font_sizes/font_size = 128
+text = "Nível do Caçador"

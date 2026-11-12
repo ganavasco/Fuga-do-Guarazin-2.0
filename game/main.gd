@@ -5,6 +5,8 @@ class_name Main
 @onready var main_menu_scene = preload("res://game/menus/main_menu.tscn")
 @onready var intro_scene = preload("res://game/cutscenes/intro.tscn")
 @onready var stage2_scene = preload("res://game/stage/Stage_2.tscn")
+@onready var stage3_scene = preload("res://game/stage/Stage_3.tscn")
+
 
 var main: Node
 var stage: Stage
@@ -33,6 +35,9 @@ func on_button_pressed()->void:
 
 func go_to_stage() -> void:
 	change_scene(stage2_scene)
+
+func go_to_stage_3() -> void:
+	change_scene(stage3_scene)
 
 func go_to_menu() -> void:
 	change_scene(main_menu_scene)

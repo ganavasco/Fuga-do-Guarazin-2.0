@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cmw7sck0pvp1w"]
+
+[ext_resource type="PackedScene" uid="uid://dfmvs8kyxf6x7" path="res://game/characters/hunter.tscn" id="1_3ci4d"]
+[ext_resource type="Script" uid="uid://b23ywcfs34xyi" path="res://game/characters/idle_turista.gd" id="2_61ker"]
+[ext_resource type="Script" uid="uid://cucfvo5pdebbb" path="res://game/characters/run.gd" id="2_s88rh"]
+
+[node name="Turista" unique_id=1218699405 instance=ExtResource("1_3ci4d")]
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=194221099]
+position = Vector2(0, -5)
+
+[node name="Idle" parent="StateMachine" parent_id_path=PackedInt32Array(1755918075) index="0" unique_id=1558843579]
+script = ExtResource("2_61ker")
+
+[node name="Run" type="Node2D" parent="StateMachine" parent_id_path=PackedInt32Array(1755918075) index="2" unique_id=162017777 node_paths=PackedStringArray("navigation_agent_2d")]
+script = ExtResource("2_s88rh")
+navigation_agent_2d = NodePath("../../NavigationAgent2D")
+
+[node name="LabelDebug" parent="." index="3" unique_id=966883024]
+visible = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." index="5" unique_id=1427393926]
+debug_enabled = true

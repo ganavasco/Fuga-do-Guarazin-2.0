@@ -9,6 +9,7 @@ extends Node2D
 @onready var fire_spawn : Marker2D = $FirePosition
 @onready var estamina : TextureProgressBar = $CanvasLayer/HUD/VBoxContainer/Estamina
 @onready var timer_estamina : Timer = $CanvasLayer/HUD/VBoxContainer/Timer
+@onready var win: Control = $CanvasLayer/Win
 
 var update_pos : bool = false
 var time : float = 0.0
@@ -23,7 +24,6 @@ func _physics_process(delta: float) -> void:
 	if update_pos:
 		_update_position(delta)
 	
-
 func _update_position(delta) -> void:
 	time += delta
 	var intervalo : float = 0.5
@@ -38,10 +38,11 @@ func _update_position(delta) -> void:
 
 
 func new_game() -> void:
+	win.hide()
 	estamina.value = 100.0
 	player.can_move = false
 	player.game_over_called = false
-	#player.fliph = false
+	player.fix_start_orientation()
 	player.position = player_spawn.position
 	reset_items()
 	fire_controler.position = fire_spawn.position
@@ -80,7 +81,14 @@ func _on_comida_comeu(estamina_value: float) -> void:
 func reset_items() -> void:
 	get_tree().call_group("Item", "reset_item")
 
-
 func _on_win_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		print("win")
+		win.show()
+		timer_estamina.stop()
+		update_pos = false
+		player.stop_player()
+
+
+func _on_continuar_pressed() -> void:
+	print("Continuar apertado")
+	MainSingleton.go_to_stage_3()

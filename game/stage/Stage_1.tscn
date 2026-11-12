@@ -7,8 +7,8 @@
 [ext_resource type="Script" uid="uid://cjk8nronimk5r" path="res://addons/TileMapDual/tile_map_dual.gd" id="4_eyb3d"]
 [ext_resource type="Texture2D" uid="uid://2cwcl01h317l" path="res://assets/tileset/piskel/riacho.png" id="4_uy0if"]
 [ext_resource type="PackedScene" uid="uid://cjwkba78ciux" path="res://game/player/player_topview.tscn" id="5_c6vql"]
-[ext_resource type="PackedScene" uid="uid://dfmvs8kyxf6x7" path="res://game/characters/hunter.tscn" id="8_uy0if"]
 [ext_resource type="PackedScene" uid="uid://cvc8wmxv5vkfu" path="res://game/itens/comida.tscn" id="9_kxee4"]
+[ext_resource type="PackedScene" uid="uid://cmw7sck0pvp1w" path="res://game/characters/turista.tscn" id="9_pu0w1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kxee4"]
 texture = ExtResource("4_48r53")
@@ -493,6 +493,12 @@ physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 5
 sources/0 = SubResource("TileSetAtlasSource_c6vql")
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_kxee4"]
+vertices = PackedVector2Array(42, 218, 214, 202, 250, 202, -6, 282, 346, 118, 310, 118, 314, 106, 422, 10, 170, 186, 134, 186, 422, 282, 346, 154, 310, 154, 250, 166, 86, 86, 86, 122, 74, 106, 74, 70, 214, 166, 218, 138, 278, 106, 170, 150, 182, 138, 218, 102, 278, 70, 42, 154, 42, 118, 86, 150, 86, 186, -68.953125, -61.328125, 447.14063, -78.65625, 447.92188, -26, -26, -26, 452.4375, 282, 452.85156, 309.97656, -67.046875, 309.0078, -26, -10, -42, -10, -42, 282, 154, 150, 154, 118, 182, 102, 122, 118, 122, 86, 118, 122, 118, 150, 38, 106, 6, 118, 122, 186, 122, 154, 134, 154, 42, 182, 6, 154, 6, 182, 314, 70, -6, 10, 38, 70, 6, 218)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(8, 1, 0, 9), PackedInt32Array(7, 10, 11, 4), PackedInt32Array(12, 11, 10, 2, 13), PackedInt32Array(14, 15, 16, 17), PackedInt32Array(5, 12, 13, 18, 19, 20), PackedInt32Array(18, 1, 8, 21), PackedInt32Array(20, 6, 5), PackedInt32Array(19, 18, 21, 22), PackedInt32Array(20, 19, 23, 24), PackedInt32Array(25, 26, 27, 28), PackedInt32Array(29, 30, 31, 32), PackedInt32Array(33, 34, 35, 10), PackedInt32Array(2, 10, 35, 3), PackedInt32Array(32, 36, 37, 29), PackedInt32Array(35, 29, 37, 38), PackedInt32Array(22, 21, 39, 40, 41), PackedInt32Array(40, 42, 43, 41), PackedInt32Array(15, 44, 45, 27), PackedInt32Array(16, 15, 27, 26, 46), PackedInt32Array(46, 26, 47), PackedInt32Array(48, 49, 50, 9), PackedInt32Array(48, 9, 0), PackedInt32Array(28, 48, 0), PackedInt32Array(28, 0, 51), PackedInt32Array(25, 28, 51, 52), PackedInt32Array(52, 51, 53), PackedInt32Array(7, 6, 54), PackedInt32Array(55, 7, 54, 24), PackedInt32Array(55, 24, 23, 41, 43, 17), PackedInt32Array(56, 46, 47, 55), PackedInt32Array(43, 14, 17), PackedInt32Array(55, 17, 56), PackedInt32Array(3, 55, 47, 52), PackedInt32Array(3, 52, 53), PackedInt32Array(3, 53, 57), PackedInt32Array(3, 57, 0), PackedInt32Array(35, 38, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-79, -71, -77, 319, 463, 320, 457, -89)])
+source_geometry_mode = 2
+
 [node name="Stage1" type="Node2D" unique_id=27746182]
 
 [node name="Cerrado" type="TileMapLayer" parent="." unique_id=1862901051]
@@ -519,15 +525,19 @@ script = ExtResource("4_eyb3d")
 godot_4_3_compatibility = false
 metadata/_custom_type_script = "uid://cjk8nronimk5r"
 
-[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1918456142]
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1918456142 groups=["navigation_polygon_source_geometry_group"]]
 tile_map_data = PackedByteArray("AAADAAUAAAACAAYAAAAGAAYAAAACAAYAAAAIAAgAAAACAAYAAAAMAAcAAAACAAYAAAASAAUAAAACAAYAAAAUAAgAAAACAAYAAAAOAAsAAAACAAYAAAAJAAoAAAACAAYAAAAGAAoAAAACAAYAAAABAAgAAAACAAYAAAABAAwAAAACAAYAAAD+//z/AAACAAIAAAD+//3/AAACAAMAAAD+//7/AAACAAQAAAD///z/AAADAAIAAAD///3/AAADAAMAAAD///7/AAADAAQAAAD/////AAADAAUAAAAAAPz/AAAEAAIAAAAAAP3/AAAEAAMAAAAAAP7/AAAEAAQAAAABAPz/AAACAAIAAAABAP3/AAACAAMAAAABAP7/AAACAAQAAAACAPz/AAADAAIAAAACAP3/AAADAAMAAAACAP7/AAADAAQAAAACAP//AAADAAUAAAADAPz/AAAEAAIAAAADAP3/AAAEAAMAAAADAP7/AAAEAAQAAAAEAPz/AAACAAIAAAAEAP3/AAACAAMAAAAEAP7/AAACAAQAAAAFAPz/AAADAAIAAAAFAP3/AAADAAMAAAAFAP7/AAADAAQAAAAFAP//AAADAAUAAAAGAPz/AAAEAAIAAAAGAP3/AAAEAAMAAAAGAP7/AAAEAAQAAAAHAPz/AAACAAIAAAAHAP3/AAACAAMAAAAHAP7/AAACAAQAAAAIAPz/AAADAAIAAAAIAP3/AAADAAMAAAAIAP7/AAADAAQAAAAIAP//AAADAAUAAAAJAPz/AAAEAAIAAAAJAP3/AAAEAAMAAAAJAP7/AAAEAAQAAAAKAPz/AAACAAIAAAAKAP3/AAACAAMAAAAKAP7/AAACAAQAAAALAPz/AAADAAIAAAALAP3/AAADAAMAAAALAP7/AAADAAQAAAALAP//AAADAAUAAAAMAPz/AAAEAAIAAAAMAP3/AAAEAAMAAAAMAP7/AAAEAAQAAAANAPz/AAACAAIAAAANAP3/AAACAAMAAAANAP7/AAACAAQAAAAOAPz/AAADAAIAAAAOAP3/AAADAAMAAAAOAP7/AAADAAQAAAAOAP//AAADAAUAAAAPAPz/AAAEAAIAAAAPAP3/AAAEAAMAAAAPAP7/AAAEAAQAAAAQAPz/AAACAAIAAAAQAP3/AAACAAMAAAAQAP7/AAACAAQAAAARAPz/AAADAAIAAAARAP3/AAADAAMAAAARAP7/AAADAAQAAAARAP//AAADAAUAAAASAPz/AAAEAAIAAAASAP3/AAAEAAMAAAASAP7/AAAEAAQAAAATAPz/AAACAAIAAAATAP3/AAACAAMAAAATAP7/AAACAAQAAAAUAPz/AAADAAIAAAAUAP3/AAADAAMAAAAUAP7/AAADAAQAAAAUAP//AAADAAUAAAAVAPz/AAAEAAIAAAAVAP3/AAAEAAMAAAAVAP7/AAAEAAQAAAAWAPz/AAACAAIAAAAWAP3/AAACAAMAAAAWAP7/AAACAAQAAAAXAPz/AAADAAIAAAAXAP3/AAADAAMAAAAXAP7/AAADAAQAAAAXAP//AAADAAUAAAAYAPz/AAAEAAIAAAAYAP3/AAAEAAMAAAAYAP7/AAAEAAQAAAAZAPz/AAACAAIAAAAZAP3/AAACAAMAAAAZAP7/AAACAAQAAAAaAPz/AAADAAIAAAAaAP3/AAADAAMAAAAaAP7/AAADAAQAAAAaAP//AAADAAUAAAAbAPz/AAAEAAIAAAAbAP3/AAAEAAMAAAAbAP7/AAAEAAQAAAAAAP//AAACAAYAAAABAP//AAACAAYAAAADAP//AAACAAYAAAAEAP//AAACAAYAAAAGAP//AAACAAYAAAAHAP//AAACAAYAAAAJAP//AAACAAYAAAAKAP//AAACAAYAAAAMAP//AAACAAYAAAANAP//AAACAAYAAAAPAP//AAACAAYAAAAQAP//AAACAAYAAAASAP//AAACAAYAAAATAP//AAACAAYAAAAVAP//AAACAAYAAAAWAP//AAACAAYAAAAYAP//AAACAAYAAAAZAP//AAACAAYAAAAbAP//AAACAAYAAAD+/wAAAAACAAYAAAD+/wEAAAACAAYAAAD+/wIAAAACAAYAAAD+/wMAAAACAAYAAAD+/wQAAAACAAYAAAD+/wUAAAACAAYAAAD+/wYAAAACAAYAAAD+/wcAAAACAAYAAAD+/wgAAAACAAYAAAD+/wkAAAACAAYAAAD+/woAAAACAAYAAAD+/wsAAAACAAYAAAD+/wwAAAACAAYAAAD+/w0AAAACAAYAAAD+/w4AAAACAAYAAAD+/w8AAAACAAYAAAD+/xAAAAACAAYAAAAbAAAAAAACAAYAAAAbAAEAAAACAAYAAAAbAAIAAAACAAYAAAAbAAMAAAACAAYAAAAbAAQAAAACAAYAAAAbAAUAAAACAAYAAAAbAAYAAAACAAYAAAAbAAcAAAACAAYAAAAbAAgAAAACAAYAAAAbAAkAAAACAAYAAAAbAAoAAAACAAYAAAAbAAsAAAACAAYAAAAbAAwAAAACAAYAAAAbAA0AAAACAAYAAAAbAA4AAAACAAYAAAAbAA8AAAACAAYAAAAbABAAAAACAAYAAAA=")
 tile_set = SubResource("TileSet_eyb3d")
 
 [node name="PlayerTopview" parent="." unique_id=673716047 instance=ExtResource("5_c6vql")]
 position = Vector2(0, 10)
 
-[node name="Hunter" parent="." unique_id=1218699405 instance=ExtResource("8_uy0if")]
-position = Vector2(235, 75)
-
 [node name="Comida" parent="." unique_id=1268355889 instance=ExtResource("9_kxee4")]
 position = Vector2(19, 37)
+
+[node name="Turista" parent="." unique_id=1218699405 node_paths=PackedStringArray("target") instance=ExtResource("9_pu0w1")]
+position = Vector2(88, 57)
+target = NodePath("../PlayerTopview")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1146818656]
+navigation_polygon = SubResource("NavigationPolygon_kxee4")

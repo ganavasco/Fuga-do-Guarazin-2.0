@@ -71,3 +71,10 @@ func game_over() -> void:
 		GameOver.emit()
 		game_over_called = true
 		camera.zoom = Vector2(4.0, 4.0)
+
+func fix_start_orientation() -> void:
+	sprite.flip_h = false
+
+func stop_player() -> void:
+	can_move = false
+	anim_player.play("IDLE")
