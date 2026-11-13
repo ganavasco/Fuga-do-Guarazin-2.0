@@ -35,6 +35,7 @@ folder_colors={
 Button=""
 player=""
 Item=""
+turista=""
 
 [gui]
 

@@ -3,21 +3,102 @@
 [ext_resource type="PackedScene" uid="uid://dfmvs8kyxf6x7" path="res://game/characters/hunter.tscn" id="1_3ci4d"]
 [ext_resource type="Script" uid="uid://b23ywcfs34xyi" path="res://game/characters/idle_turista.gd" id="2_61ker"]
 [ext_resource type="Script" uid="uid://cucfvo5pdebbb" path="res://game/characters/run.gd" id="2_s88rh"]
+[ext_resource type="Script" uid="uid://dlx7vpx7rgj84" path="res://game/characters/jump_turista.gd" id="4_61ker"]
 
-[node name="Turista" unique_id=1218699405 instance=ExtResource("1_3ci4d")]
+[sub_resource type="Animation" id="Animation_61ker"]
+resource_name = "CHASE"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_heiot"]
+resource_name = "IDLE"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_77qku"]
+resource_name = "JUMP"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_heiot"]
+_data = {
+&"CHASE": SubResource("Animation_61ker"),
+&"IDLE": SubResource("Animation_heiot"),
+&"JUMP": SubResource("Animation_77qku")
+}
+
+[node name="Turista" unique_id=1218699405 node_paths=PackedStringArray("animation_p", "collision", "run_node") groups=["turista"] instance=ExtResource("1_3ci4d")]
+collision_mask = 2
+animation_p = NodePath("AnimationPlayerTurista")
+collision = NodePath("CollisionShape2D")
+run_node = NodePath("StateMachine/Run")
 
 [node name="CollisionShape2D" parent="." index="1" unique_id=194221099]
 position = Vector2(0, -5)
 
 [node name="Idle" parent="StateMachine" parent_id_path=PackedInt32Array(1755918075) index="0" unique_id=1558843579]
+visible = false
 script = ExtResource("2_61ker")
+
+[node name="Chase" parent="StateMachine" parent_id_path=PackedInt32Array(1755918075) index="1" unique_id=1165314797]
+visible = false
 
 [node name="Run" type="Node2D" parent="StateMachine" parent_id_path=PackedInt32Array(1755918075) index="2" unique_id=162017777 node_paths=PackedStringArray("navigation_agent_2d")]
 script = ExtResource("2_s88rh")
 navigation_agent_2d = NodePath("../../NavigationAgent2D")
 
+[node name="Jump" type="Node2D" parent="StateMachine" parent_id_path=PackedInt32Array(1755918075) index="3" unique_id=1218475824 node_paths=PackedStringArray("jump_timer")]
+script = ExtResource("4_61ker")
+jump_timer = NodePath("JumpTimer")
+
+[node name="JumpTimer" type="Timer" parent="StateMachine/Jump" index="0" unique_id=372045482]
+wait_time = 0.5
+
 [node name="LabelDebug" parent="." index="3" unique_id=966883024]
 visible = true
 
+[node name="AnimationPlayer" parent="." index="4" unique_id=2032388079]
+autoplay = &""
+
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." index="5" unique_id=1427393926]
 debug_enabled = true
+
+[node name="AnimationPlayerTurista" type="AnimationPlayer" parent="." index="6" unique_id=145397369]
+libraries/ = SubResource("AnimationLibrary_heiot")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." index="7" unique_id=1761836557]
+
+[connection signal="timeout" from="StateMachine/Jump/JumpTimer" to="StateMachine/Jump" method="_on_jump_timer_timeout"]
+[connection signal="link_reached" from="NavigationAgent2D" to="StateMachine/Run" method="_on_navigation_agent_2d_link_reached"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="StateMachine/Run" method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="StateMachine/Run" method="_on_visible_on_screen_notifier_2d_screen_exited"]

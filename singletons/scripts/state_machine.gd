@@ -6,6 +6,7 @@ class_name StateMachineV2
 
 var states: Dictionary = {}
 var current_state : State
+var destination : Vector2
 
 func _ready() -> void:
 	#Adiciona os estados disponíveis no dicionário states

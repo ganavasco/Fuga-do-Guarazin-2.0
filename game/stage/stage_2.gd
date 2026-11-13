@@ -1,5 +1,8 @@
 extends Node2D
 
+@export var turista_spawn: Marker2D
+@export var turista: CharacterBody2D
+
 @onready var player : PlayerTopView = $PlayerTopview
 @onready var stage_cam : Camera2D = $Camera2D
 @onready var anim : AnimationPlayer = $AnimationPlayer
@@ -11,14 +14,17 @@ extends Node2D
 @onready var timer_estamina : Timer = $CanvasLayer/HUD/VBoxContainer/Timer
 @onready var win: Control = $CanvasLayer/Win
 
+
 var update_pos : bool = false
 var time : float = 0.0
 var index : int = 0
 var total_index : int
 var fire_layers : Array
+var intervalo : float = 0.4
 
 func _ready() -> void:
 	new_game()
+	
 
 func _physics_process(delta: float) -> void:
 	if update_pos:
@@ -26,11 +32,14 @@ func _physics_process(delta: float) -> void:
 	
 func _update_position(delta) -> void:
 	time += delta
-	var intervalo : float = 0.5
 	if time > intervalo:
 		time -= intervalo
 		#fire_layers[index].position.x += 280
 		fire_controler.global_position.x += 20
+		if (player.global_position.x - fire_controler.global_position.x) > 100.0:
+			intervalo = 0.2
+		else:
+			intervalo = 0.4
 		#print(fire_controler.position)
 		#index -= 1
 		#if index < 0:
@@ -44,6 +53,8 @@ func new_game() -> void:
 	player.game_over_called = false
 	player.fix_start_orientation()
 	player.position = player_spawn.position
+	turista.position = turista_spawn.position
+	turista.disable_movement()
 	reset_items()
 	fire_controler.position = fire_spawn.position
 	game_over_label.hide()
@@ -51,6 +62,7 @@ func new_game() -> void:
 	stage_cam.enabled = true
 	anim.play("FIRE_IGNITING", 0.0)
 	await  anim.animation_finished
+	turista.enable_movement()
 	timer_estamina.start()
 	player.can_move = true
 	update_pos = true

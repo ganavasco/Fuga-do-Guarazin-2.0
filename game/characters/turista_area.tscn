@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bpnl5cd6wa0tl"]
+
+[ext_resource type="Script" uid="uid://blu0n20hm46j" path="res://game/characters/turista_area.gd" id="1_o8ar0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hevxx"]
+size = Vector2(40, 57)
+
+[node name="TuristaArea" type="Area2D" unique_id=203933937 groups=["turista"]]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("1_o8ar0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=449208445]
+shape = SubResource("RectangleShape2D_hevxx")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
