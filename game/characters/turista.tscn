@@ -75,6 +75,7 @@ visible = false
 
 [node name="Run" type="Node2D" parent="StateMachine" parent_id_path=PackedInt32Array(1755918075) index="2" unique_id=162017777 node_paths=PackedStringArray("navigation_agent_2d")]
 script = ExtResource("2_s88rh")
+walk_speed = 150.0
 navigation_agent_2d = NodePath("../../NavigationAgent2D")
 
 [node name="Jump" type="Node2D" parent="StateMachine" parent_id_path=PackedInt32Array(1755918075) index="3" unique_id=1218475824 node_paths=PackedStringArray("jump_timer")]
@@ -83,9 +84,6 @@ jump_timer = NodePath("JumpTimer")
 
 [node name="JumpTimer" type="Timer" parent="StateMachine/Jump" index="0" unique_id=372045482]
 wait_time = 0.5
-
-[node name="LabelDebug" parent="." index="3" unique_id=966883024]
-visible = true
 
 [node name="AnimationPlayer" parent="." index="4" unique_id=2032388079]
 autoplay = &""
@@ -97,6 +95,15 @@ debug_enabled = true
 libraries/ = SubResource("AnimationLibrary_heiot")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." index="7" unique_id=1761836557]
+
+[node name="Label" type="Label" parent="." index="8" unique_id=1122564057]
+visible = false
+offset_left = 17.0
+offset_top = -45.0
+offset_right = 59.0
+offset_bottom = -29.0
+text = "Socorro, 
+o que eu faço?"
 
 [connection signal="timeout" from="StateMachine/Jump/JumpTimer" to="StateMachine/Jump" method="_on_jump_timer_timeout"]
 [connection signal="link_reached" from="NavigationAgent2D" to="StateMachine/Run" method="_on_navigation_agent_2d_link_reached"]

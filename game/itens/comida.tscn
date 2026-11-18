@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cvc8wmxv5vkfu"]
 
 [ext_resource type="Script" uid="uid://dequdvfb0vw4h" path="res://game/itens/comida.gd" id="1_cihl7"]
-[ext_resource type="Texture2D" uid="uid://bdcekde4bc56b" path="res://assets/collectibles/gabiroba.png" id="2_cihl7"]
+[ext_resource type="Texture2D" uid="uid://d4s5nyevyrjl" path="res://assets/collectibles/lobeira.png" id="2_cihl7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cihl7"]
 radius = 5.0
