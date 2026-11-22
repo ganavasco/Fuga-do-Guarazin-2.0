@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://vbjxpi4hihuh"]
 
-[ext_resource type="Texture2D" uid="uid://bhm6py8ybf5fn" path="res://assets/cutscenes/intro.png" id="1_0dm2o"]
 [ext_resource type="Script" uid="uid://dy84lo51yk074" path="res://game/cutscenes/intro.gd" id="1_4x02e"]
+[ext_resource type="Texture2D" uid="uid://bm27yinxqewqe" path="res://assets/cutscenes/intro_turista.png" id="2_4kgca"]
 [ext_resource type="AudioStream" uid="uid://dgqc1sejjop7w" path="res://assets/bgm/intro.mp3" id="3_4kgca"]
 
 [sub_resource type="Animation" id="Animation_4x02e"]
@@ -64,7 +64,7 @@ libraries/ = SubResource("AnimationLibrary_4x02e")
 [node name="Intro" type="Sprite2D" parent="." unique_id=405420797]
 position = Vector2(571.5, 781)
 scale = Vector2(0.6340263, 0.63402617)
-texture = ExtResource("1_0dm2o")
+texture = ExtResource("2_4kgca")
 
 [node name="Label" type="Label" parent="." unique_id=418576214]
 offset_left = 14.0

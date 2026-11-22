@@ -89,7 +89,6 @@ wait_time = 0.5
 autoplay = &""
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." index="5" unique_id=1427393926]
-debug_enabled = true
 
 [node name="AnimationPlayerTurista" type="AnimationPlayer" parent="." index="6" unique_id=145397369]
 libraries/ = SubResource("AnimationLibrary_heiot")

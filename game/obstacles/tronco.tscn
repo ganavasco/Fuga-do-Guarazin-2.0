@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://de6u70t4i73lh"]
+
+[ext_resource type="Texture2D" uid="uid://ikssbelvof06" path="res://assets/background/tronco.png" id="1_i40dj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b2x82"]
+size = Vector2(16, 128)
+
+[node name="Node2D" type="StaticBody2D" unique_id=154634002]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1537744642]
+shape = SubResource("RectangleShape2D_b2x82")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=944950585]
+texture = ExtResource("1_i40dj")

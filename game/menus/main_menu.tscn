@@ -58,18 +58,21 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_tfb2k")
 text = "Começar"
 
 [node name="Collectibles" type="Button" parent="MarginContainerMenu/VBoxContainer/MarginContainer/VBoxContainer" unique_id=437046575 groups=["Button"]]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxEmpty_tfb2k")
 text = "Colecionáveis"
 
 [node name="Configs" type="Button" parent="MarginContainerMenu/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1739735592 groups=["Button"]]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxEmpty_tfb2k")
 text = "Configurações"
 
 [node name="Credits" type="Button" parent="MarginContainerMenu/VBoxContainer/MarginContainer/VBoxContainer" unique_id=201073627 groups=["Button"]]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxEmpty_tfb2k")

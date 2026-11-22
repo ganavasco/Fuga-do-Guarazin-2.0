@@ -1,10 +1,15 @@
 extends Node2D
 
+signal win_signal
+
 @export var turista_spawn: Marker2D
 @export var turista: CharacterBody2D
+@export var water_source_id: int = 1
+@export var water_atlas_coords: Vector2i = Vector2i(2, 1)
 
 @onready var player : PlayerTopView = $PlayerTopview
 @onready var stage_cam : Camera2D = $Camera2D
+@onready var stage_cam_final : Camera2D = $Camera2DFinal
 @onready var anim : AnimationPlayer = $AnimationPlayer
 @onready var fire_controler : Node2D = $FireControler
 @onready var game_over_label : Control = $CanvasLayer/GameOver
@@ -13,7 +18,7 @@ extends Node2D
 @onready var estamina : TextureProgressBar = $CanvasLayer/HUD/VBoxContainer/Estamina
 @onready var timer_estamina : Timer = $CanvasLayer/HUD/VBoxContainer/Timer
 @onready var win: Control = $CanvasLayer/Win
-
+@onready var river_data_layer: TileMapLayer = $Rio
 
 var update_pos : bool = false
 var time : float = 0.0
@@ -24,6 +29,7 @@ var intervalo : float = 0.4
 
 func _ready() -> void:
 	new_game()
+	#anim.play("WaterFlood2")
 	
 
 func _physics_process(delta: float) -> void:
@@ -95,12 +101,24 @@ func reset_items() -> void:
 
 func _on_win_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		win.show()
+		#win.show()
 		timer_estamina.stop()
 		update_pos = false
 		player.stop_player()
-
+		player.use_camera(false)
+		stage_cam_final.enabled = true
+		anim.play("WaterFlood2")
 
 func _on_continuar_pressed() -> void:
 	print("Continuar apertado")
 	MainSingleton.go_to_stage_3()
+
+func paint_river_chunk(area: Rect2i) -> void:
+	for x in range(area.position.x, area.end.x):
+		for y in range(area.position.y, area.end.y):
+			river_data_layer.set_cell(Vector2i(x, y), water_source_id, water_atlas_coords)
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "WaterFlood2":
+		win.show()
