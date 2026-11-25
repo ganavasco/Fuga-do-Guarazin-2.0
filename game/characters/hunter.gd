@@ -1,5 +1,10 @@
 extends CharacterBody2D
 
+signal need_new_target
+
+@onready var run : TuristaRun = $StateMachine/Run
+@onready var idle : TuristaIdle = $StateMachine/Idle
+
 @export var target : Node2D
 @export var animation_p : AnimationPlayer
 @export var sprite : Sprite2D
@@ -8,9 +13,7 @@ extends CharacterBody2D
 @export var speed : float = 150:
 	set(value):
 		speed = value
-		idle.walk_speed = value
-
-@onready var idle : TuristaIdle = $StateMachine/Idle
+		$StateMachine/Run.walk_speed = value
 
 func _ready() -> void:
 	disable_movement()
@@ -35,3 +38,6 @@ func update_target(new_target):
 		
 func start_chase() -> void:
 	idle.StartChase()
+
+func _on_dash_dash_exit() -> void:
+	need_new_target.emit()

@@ -932,6 +932,20 @@ tracks/19/keys = {
 "update": 0,
 "values": [0.0, -0.8185594191853401]
 }
+tracks/20/type = "method"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("FireControler")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(6.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"hide"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_7qvw6"]
 resource_name = "WaterFlowing"
@@ -1192,8 +1206,8 @@ texture = ExtResource("4_8o5n5")
 2:1/0/terrains_peering_bit/top_right_corner = 2
 
 [sub_resource type="TileSet" id="TileSet_kxee4"]
-physics_layer_0/collision_layer = 2
-physics_layer_0/collision_mask = 5
+physics_layer_0/collision_layer = 66
+physics_layer_0/collision_mask = 37
 terrain_set_0/mode = 1
 terrain_set_0/terrain_0/name = "<any>"
 terrain_set_0/terrain_0/color = Color(0.93333334, 0.50980395, 0.93333334, 1)
@@ -1324,7 +1338,7 @@ tile_map_data = PackedByteArray("AAD//xQAAQAKAAgAAAAAABMAAQALAAcAAAAAABQAAQALAAg
 tile_set = ExtResource("7_flyyq")
 
 [node name="PlayerSpawn" type="Marker2D" parent="." unique_id=1406500944]
-position = Vector2(104, 146)
+position = Vector2(102, 141)
 
 [node name="TuristaSpawn" type="Marker2D" parent="." unique_id=935920989]
 position = Vector2(93, 217)
@@ -2923,6 +2937,7 @@ position = Vector2(6629, 45)
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="GameOver" from="PlayerTopview" to="." method="game_over"]
+[connection signal="need_new_target" from="Turista" to="." method="update_tourist_target"]
 [connection signal="comeu" from="Itens/Comida" to="." method="_on_comida_comeu"]
 [connection signal="comeu" from="Itens/Comida2" to="." method="_on_comida_comeu"]
 [connection signal="comeu" from="Itens/Comida3" to="." method="_on_comida_comeu"]

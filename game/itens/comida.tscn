@@ -1,14 +1,17 @@
 [gd_scene format=3 uid="uid://cvc8wmxv5vkfu"]
 
 [ext_resource type="Script" uid="uid://dequdvfb0vw4h" path="res://game/itens/comida.gd" id="1_cihl7"]
+[ext_resource type="PackedScene" uid="uid://cil6jbf4mjusr" path="res://game/itens/popup.tscn" id="2_2owkj"]
 [ext_resource type="Texture2D" uid="uid://d4s5nyevyrjl" path="res://assets/collectibles/lobeira.png" id="2_cihl7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cihl7"]
 radius = 5.0
 
-[node name="Comida" type="Area2D" unique_id=1268355889]
+[node name="Comida" type="Area2D" unique_id=1268355889 node_paths=PackedStringArray("sprite")]
 collision_layer = 8
 script = ExtResource("1_cihl7")
+sprite = NodePath("Sprite2D")
+popup_scene = ExtResource("2_2owkj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=143864328]
 shape = SubResource("CircleShape2D_cihl7")

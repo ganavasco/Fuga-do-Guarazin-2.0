@@ -19,6 +19,7 @@ signal win_signal
 @onready var timer_estamina : Timer = $CanvasLayer/HUD/VBoxContainer/Timer
 @onready var win: Control = $CanvasLayer/Win
 @onready var river_data_layer: TileMapLayer = $Rio
+@onready var areas : Node2D = $TuristaAreas/Areas
 
 var update_pos : bool = false
 var time : float = 0.0
@@ -42,7 +43,9 @@ func _update_position(delta) -> void:
 		time -= intervalo
 		#fire_layers[index].position.x += 280
 		fire_controler.global_position.x += 20
-		if (player.global_position.x - fire_controler.global_position.x) > 100.0:
+		if (player.global_position.x - fire_controler.global_position.x) > 1000.0:
+			intervalo = 0.01
+		elif (player.global_position.x - fire_controler.global_position.x) > 100.0:
 			intervalo = 0.2
 		else:
 			intervalo = 0.4
@@ -122,3 +125,11 @@ func paint_river_chunk(area: Rect2i) -> void:
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "WaterFlood2":
 		win.show()
+
+func update_tourist_target() -> void:
+	var turista_x = turista.global_position.x
+	for child in areas.get_children():
+		if child.global_position.x > turista_x:
+			turista.update_target(child)
+			break
+			

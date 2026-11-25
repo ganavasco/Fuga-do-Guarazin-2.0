@@ -556,6 +556,24 @@ position = Vector2(0, 10)
 [node name="Comida" parent="." unique_id=1268355889 instance=ExtResource("9_kxee4")]
 position = Vector2(19, 37)
 
+[node name="Comida6" parent="." unique_id=371797206 instance=ExtResource("9_kxee4")]
+position = Vector2(19, 60)
+
+[node name="Comida2" parent="." unique_id=2071408026 instance=ExtResource("9_kxee4")]
+position = Vector2(46, 37)
+
+[node name="Comida7" parent="." unique_id=611550426 instance=ExtResource("9_kxee4")]
+position = Vector2(46, 60)
+
+[node name="Comida3" parent="." unique_id=1764249422 instance=ExtResource("9_kxee4")]
+position = Vector2(75, 37)
+
+[node name="Comida4" parent="." unique_id=87702960 instance=ExtResource("9_kxee4")]
+position = Vector2(108, 37)
+
+[node name="Comida5" parent="." unique_id=1672125521 instance=ExtResource("9_kxee4")]
+position = Vector2(137, 37)
+
 [node name="Turista" parent="." unique_id=1218699405 node_paths=PackedStringArray("target") instance=ExtResource("9_pu0w1")]
 position = Vector2(88, 57)
 target = NodePath("../TuristaArea")

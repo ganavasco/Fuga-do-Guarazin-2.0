@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cil6jbf4mjusr"]
+
+[ext_resource type="Script" uid="uid://ur78qs1tdd1b" path="res://game/itens/popup.gd" id="1_5h5ib"]
+
+[node name="Popup" type="Node2D" unique_id=1179417879 node_paths=PackedStringArray("label")]
+process_mode = 3
+script = ExtResource("1_5h5ib")
+label = NodePath("Label")
+
+[node name="Label" type="Label" parent="." unique_id=150014840]
+offset_left = -22.0
+offset_top = -6.0
+offset_right = 18.0
+offset_bottom = 10.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+text = "+est"
+horizontal_alignment = 1

@@ -29,3 +29,12 @@ func go_to_full_advanced() -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		body.game_over()
+
+
+func _on_water_detection() -> void:
+	pass
+
+
+func _on_water_detection_body_entered(body: Node2D) -> void:
+	print("A")
+	self.hide()
