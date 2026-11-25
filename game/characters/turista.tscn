@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://b23ywcfs34xyi" path="res://game/characters/idle_turista.gd" id="2_61ker"]
 [ext_resource type="Script" uid="uid://cucfvo5pdebbb" path="res://game/characters/run.gd" id="2_s88rh"]
 [ext_resource type="Script" uid="uid://dlx7vpx7rgj84" path="res://game/characters/jump_turista.gd" id="4_61ker"]
+[ext_resource type="Script" uid="uid://b7meqcnjbvd5c" path="res://game/characters/dash.gd" id="5_heiot"]
 
 [sub_resource type="Animation" id="Animation_61ker"]
 resource_name = "CHASE"
@@ -75,7 +76,6 @@ visible = false
 
 [node name="Run" type="Node2D" parent="StateMachine" parent_id_path=PackedInt32Array(1755918075) index="2" unique_id=162017777 node_paths=PackedStringArray("navigation_agent_2d")]
 script = ExtResource("2_s88rh")
-walk_speed = 150.0
 navigation_agent_2d = NodePath("../../NavigationAgent2D")
 
 [node name="Jump" type="Node2D" parent="StateMachine" parent_id_path=PackedInt32Array(1755918075) index="3" unique_id=1218475824 node_paths=PackedStringArray("jump_timer")]
@@ -84,6 +84,9 @@ jump_timer = NodePath("JumpTimer")
 
 [node name="JumpTimer" type="Timer" parent="StateMachine/Jump" index="0" unique_id=372045482]
 wait_time = 0.5
+
+[node name="Dash" type="Node2D" parent="StateMachine" parent_id_path=PackedInt32Array(1755918075) index="4" unique_id=883296584]
+script = ExtResource("5_heiot")
 
 [node name="AnimationPlayer" parent="." index="4" unique_id=2032388079]
 autoplay = &""

@@ -15,8 +15,8 @@ func Update(_delta : float):
 
 func Physics_Update(_delta : float):
 	character.velocity = Vector2.ZERO
-	if Input.is_action_just_pressed("jump"):
-		StartChase()
+	#if Input.is_action_just_pressed("jump"):
+	#	StartChase()
 
 func StartChase():
 	transitioned.emit(self, "Run")
